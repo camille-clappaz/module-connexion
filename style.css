@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 7, 7);
+}
+
+.erreur {
+    color: red;
+    font-size: 50px;
+    text-align: center;
+}
+
+/* Page de connexion */
+.formulaire {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    display: flex;
+    width: 200px;
+    height: 300px;
+    background-color: blueviolet;
+    justify-content: center;
+    margin: 0 auto;
+
+}
+
+/* index */
+.banniere {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.onglets {
+    width: 100%;
+    font-size: 40px;
+    position: absolute;
+    justify-content: space-around;
+    display: flex;
+    top: 20px;
+    color: rgb(0, 7, 7);
+
+}
+
+.deconnexion {
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.bonjour {
+    text-align: center;
+    font-size: 100px;
+
+}
+
+/* Inscription */
+.inscription,
+.modification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #7d7d73;
+    height: 200px;
+    text-align: center;
+
+}
+
+/* paga admin */
+.tab_user {
+    display: flex;
+    justify-content: center;
+    margin: 4px;
+    text-align: center;
+
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 2px solid black;
+
+}

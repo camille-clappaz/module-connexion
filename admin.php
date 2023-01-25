@@ -1,4 +1,5 @@
 <?php
+session_start();
 $mysqli=new mysqli("localhost", "root", "", "moduleconnexion");
 if( $mysqli->connect_error ) {
     echo "erreur de connexion a MySQL:" .$mysqli -> connect_error;
@@ -21,6 +22,11 @@ header("location:index.php");
     <title>Document</title>
 </head>
 <body>
+<?php
+include('header-include.php');
+?>
+   <main>
+    <div class="tab_user">
 <table >
     <thead >
         <tr >
@@ -46,17 +52,13 @@ header("location:index.php");
        <?php endfor; ?>
     </tbody>
 </table>   
-
-<style>
-
-    table{
-        border-collapse: collapse;
-    }
-    td, th{
-        padding: 10px;
-        border: 2px solid black;
-        
-    }
-</style>
+</div>
+</main>
+<footer>
+    <?php
+    include('footer-include.php');
+    
+    ?>
+</footer>
 </body>
 </html>
