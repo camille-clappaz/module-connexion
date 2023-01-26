@@ -21,18 +21,20 @@ if ($mysqli->connect_error) {
 </head>
 
 <body>
-
+<?php include('header-include.php');?>
     <main>
         <?php
         if (isset($_POST['submit'])) { // Permet de verifier la suite UNIQUEMENT si on appuie sur Submit
             //if(empty($_POST["login"]))  Si l'input est vide
             if (!empty($_POST["login"]) && !empty($_POST["prenom"]) && !empty($_POST["nom"]) && !empty($_POST["password"])) {
+                $id=$_SESSION['user'][0]['id'];
                 $login = $_POST['login'];
                 $prenom = $_POST['prenom'];
                 $nom = $_POST['nom'];
                 $password = $_POST['password'];
-                if ($_POST['password'] == $_POST['confirmpassword']) {
-                    $request = $mysqli->query("UPDATE `utilisateurs`  SET login='$login', prenom='$prenom', nom='$nom', password='$password' WHERE login LIKE'$login'");
+                if ($_POST['password'] == $_POST['confirmpassword']) {//Attention si on cherche par le login, on ne pourra pas le modifier
+                    //donc il faut chercher par l'id.
+                    $request = $mysqli->query("UPDATE `utilisateurs`  SET login='$login', prenom='$prenom', nom='$nom', password='$password' WHERE id LIKE'$id'");
                     header('Location:index.php');
                 } else {
                     echo "Les mots de passe sont différents!";
@@ -44,37 +46,54 @@ if ($mysqli->connect_error) {
 
         ?>
 
-        <div class="container">
-            <form class="modification" action="" method="POST">
-                <input type="text" name="login" value="<?php
+       
+        <div class="login-box">
+  <h2>Modifier le profil</h2>
+  <form method="POST">
+    <div class="user-box">
+      <input  type="text" name="login" value="<?php
                                                         $login = $_SESSION['user'][0]['login'];
                                                         echo "$login"; ?>">
-
-                <input type="text" name="prenom" value="<?php
+      <label>Login</label>
+    </div>
+    <div class="user-box">
+      <input  type="text" name="prenom" value="<?php
                                                         $prenom = $_SESSION['user'][0]['prenom'];
                                                         echo "$prenom"; ?>">
-
-                <input type="text" name="nom" value="<?php
+      <label>Prenom</label>
+    </div>
+    <div class="user-box">
+      <input  type="text" name="nom" value="<?php
                                                         $nom = $_SESSION['user'][0]['nom'];
                                                         echo "$nom"; ?>">
-
-                <input type="password" name="password" value="<?php
+      <label>Nom</label>
+    </div>
+    <div class="user-box">
+      <input  type="password" name="password" value="<?php
                                                                 $password = $_SESSION['user'][0]['password'];
                                                                 echo "$password"; ?>">
-
-                <input type="password" name="confirmpassword" value="<?php
+      <label>Password</label>
+    </div>
+    <div class="user-box">
+      <input  type="password" name="confirmpassword" value="<?php
                                                                         $password = $_SESSION['user'][0]['password'];
                                                                         echo "$password"; ?>">
-                <button type="submit" name="submit">Modifier</button>
-            </form>
-        </div>
-        <?php
-
-        ?>
-
+      <label>Confirmation Password</label>
+    </div>
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <button type="submit" name="submit" >Modifier le profil</button>
+    </a>
+  </form>
+</div>
 
     </main>
-    <footer></footer>
+    <footer>
+    <?php include('footer-include.php');?>
+    </footer>
 
 </body>
 

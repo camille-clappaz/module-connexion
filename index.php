@@ -46,29 +46,57 @@ $result = $request->fetch_all(MYSQLI_ASSOC);
         }
       }
     }
-    var_dump($_SESSION['user']);
 
     ?>
     <?php
     if (empty($_SESSION['user'])) : ?>
-      <div class="card">
-        <form class="formulaire" action="" method="POST">
-          <input placeholder="Login" type="text" name="login">
-          <input placeholder="Password" type="text" name="password">
-          <button type="submit" name="submit">Se connecter</button>
+    <?php 
+    // foreach($result as $key=>$value){
+    //   if($_POST['login']!=$value && $_POST['password']!=$value){
+    //     // header('Location:inscription.php');
+    //   }
+      
+    
+      
+      ?>
+      <div class="login-box">
+        <h2>Connexion</h2>
+        <form method="POST">
+          <div class="user-box">
+            <input type="text" name="login" required="">
+            <label>Login</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="password" required="">
+            <label>Password</label>
+          </div>
+          <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <button type="submit" name="submit" >Se connecter</button>
+            
+          </a>
         </form>
       </div>
     <?php endif ?>
-  </main>
+    
+ 
+  <div class="bonjour">
+    <?php
+    if (!empty($_SESSION['user'])) :
+      $user = $_SESSION['user'][0]['login']; ?>
+      <p>Bonjour <?= $user ?></p>
+      <p>:)</p>
+  </div>
+<?php endif ?>
+</main>
+<footer>
   <?php
-  if (!empty($_SESSION['user'])) :
-    $user = $_SESSION['user'][0]['login']; ?>
-
-    <p class='bonjour'>Bonjour <?= $user ?></p>
-    <p class='bonjour'>:)</p>
-  <?php endif ?>
-
-  <footer></footer>
+  include('footer-include.php');
+  ?>
+</footer>
 
 </body>
 

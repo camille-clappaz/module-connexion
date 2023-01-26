@@ -21,7 +21,7 @@ if ($mysqli->connect_error) {
 </head>
 
 <body>
-
+    <?php include('header-include.php');?>
     <main>
         <?php
         if (isset($_POST['submit'])) { // Permet de verifier la suite UNIQUEMENT si on appuie sur Submit
@@ -35,27 +35,49 @@ if ($mysqli->connect_error) {
                     $request = $mysqli->query("INSERT INTO utilisateurs ( login, prenom, nom, password) VALUES ( '$login', '$prenom', '$nom', '$password')");
                     header('Location:index.php');
                 } else {
-                    echo "Les mots de passe sont différents!";
+                    echo "<p class='erreur'>Les mots de passe sont différents!</p>";
                 }
-            } else {
-                echo "il manque des trucs bro!";
-            }
+            } 
         }
         ?>
 
-        <div class="container">
-            <form class="inscription" action="" method="POST">
-                <input placeholder="Login" type="text" name="login">
-                <input placeholder="Prenom" type="text" name="prenom">
-                <input placeholder="Nom" type="text" name="nom">
-                <input placeholder="Password" type="password" name="password">
-                <input placeholder="Confirmation password" type="password" name="confirmpassword">
-                <button type="submit" name="submit">S'inscrire</button>
-            </form>
-        </div>
+<div class="login-box">
+  <h2>Inscription</h2>
+  <form method="POST">
+    <div class="user-box">
+      <input type="text" name="login" required="">
+      <label>Login</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="prenom" required="">
+      <label>Prenom</label>
+    </div>
+    <div class="user-box">
+      <input  type="text" name="nom" required="">
+      <label>Nom</label>
+    </div>
+    <div class="user-box">
+      <input  type="password" name="password" required="">
+      <label>Password</label>
+    </div>
+    <div class="user-box">
+      <input  type="password" name="confirmpassword" required="">
+      <label>Confirmation Password</label>
+    </div>
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <button type="submit" name="submit" >S'inscrire</button>
+    </a>
+  </form>
+</div>
 
     </main>
-    <footer></footer>
+    <footer>
+    <?php include('footer-include.php');?>
+    </footer>
 
 </body>
 
