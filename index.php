@@ -1,9 +1,9 @@
 <?php
 session_start();
-$mysqli = new mysqli("localhost", "root", "", "moduleconnexion");
-if ($mysqli->connect_error) {
-  echo "erreur de connexion a MySQL:" . $mysqli->connect_error;
-  exit();
+$mysqli=new mysqli('localhost', 'camille-clappaz', 'HTqRlhcphi81y3#?', 'camille-clappaz_moduleconnexion');
+if( $mysqli->connect_error ) {
+    echo "erreur de connexion a MySQL:" .$mysqli -> connect_error;
+    exit();
 }
 $request = $mysqli->query("SELECT * FROM utilisateurs");
 $result = $request->fetch_all(MYSQLI_ASSOC);
@@ -22,6 +22,7 @@ $result = $request->fetch_all(MYSQLI_ASSOC);
 <body>
   <?php
   include('header-include.php');
+  
   ?>
 
   <main>
@@ -46,19 +47,11 @@ $result = $request->fetch_all(MYSQLI_ASSOC);
         }
       }
     }
-
+  
     ?>
     <?php
     if (empty($_SESSION['user'])) : ?>
-    <?php 
-    // foreach($result as $key=>$value){
-    //   if($_POST['login']!=$value && $_POST['password']!=$value){
-    //     // header('Location:inscription.php');
-    //   }
-      
     
-      
-      ?>
       <div class="login-box">
         <h2>Connexion</h2>
         <form method="POST">
@@ -89,12 +82,15 @@ $result = $request->fetch_all(MYSQLI_ASSOC);
       $user = $_SESSION['user'][0]['login']; ?>
       <p>Bonjour <?= $user ?></p>
       <p>:)</p>
+   
   </div>
 <?php endif ?>
+
 </main>
 <footer>
   <?php
   include('footer-include.php');
+  
   ?>
 </footer>
 

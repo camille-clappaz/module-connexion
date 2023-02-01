@@ -1,8 +1,8 @@
 <?php
 session_start();
-$mysqli = new mysqli("localhost", "root", "", "moduleconnexion");
-if ($mysqli->connect_error) {
-    echo "erreur de connexion a MySQL:" . $mysqli->connect_error;
+$mysqli=new mysqli('localhost', 'camille-clappaz', 'HTqRlhcphi81y3#?', 'camille-clappaz_moduleconnexion');
+if( $mysqli->connect_error ) {
+    echo "erreur de connexion a MySQL:" .$mysqli -> connect_error;
     exit();
 }
 // $request=$mysqli->query("SELECT * FROM utilisateurs WHERE login LIKE'$login'");
@@ -43,7 +43,6 @@ if ($mysqli->connect_error) {
                 echo "il manque des trucs bro!";
             }
         }
-
         ?>
 
        
